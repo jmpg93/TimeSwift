@@ -77,8 +77,7 @@
 				18B1C76A1F19467F003FB5B4 /* Month.swift */,
 				18B1C76C1F194702003FB5B4 /* Year.swift */,
 			);
-			name = Source;
-			path = "New Group";
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

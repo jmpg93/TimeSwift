@@ -8,80 +8,79 @@
 
 import Foundation
 
-
-struct Day: Comparable {
-	static let current = Day(date: Date())
+public struct Day: Comparable {
+	public static let current = Day(date: Date())
 
 	fileprivate let referenceDate: Date
 	fileprivate let calendar: Calendar
 
-	init(date: Date, in calendar: Calendar = .current) {
+	public init(date: Date, in calendar: Calendar = .current) {
 		self.referenceDate = date
 		self.calendar = calendar
 	}
 
 	// Symbols
 
-	var symbol: String {
+	public var symbol: String {
 		return calendar.weekdaySymbols[weekday]
 	}
 
-	var shortSymbol: String {
+	public var shortSymbol: String {
 		return calendar.shortWeekdaySymbols[weekday]
 	}
 
-	var veryShortSymbol: String {
+	public var veryShortSymbol: String {
 		return calendar.veryShortWeekdaySymbols[weekday]
 	}
 
 	// Basic
 
-	var day: Int {
+	public var day: Int {
 		return calendar.dateComponents([.day], from: referenceDate).day!
 	}
 
-	var weekday: Int {
+	public var weekday: Int {
 		return calendar.dateComponents([.weekday], from: referenceDate).weekday!.advanced(by: -1)
 	}
 
-	var yearday: Int {
+	public var yearday: Int {
 		return calendar.ordinality(of: .day, in: .year, for: referenceDate)!
 	}
 
-	var isCurrentDay: Bool {
+	public var isCurrentDay: Bool {
 		return Day.current.day == day && month.isCurrentMonth && year.isCurrentYear
 	}
 
-	var isWeekend: Bool {
+	public var isWeekend: Bool {
 		return calendar.isDateInWeekend(referenceDate)
 	}
 
 	// Jumps
 
-	var month: Month {
+	public var month: Month {
 		return Month(date: referenceDate, in: calendar)
 	}
 
-	var year: Year {
+	public var year: Year {
 		return Year(date: referenceDate, in: calendar)
 	}
 
-	var week: Week {
+	public var week: Week {
 		return Week(date: referenceDate, in: calendar)
 	}
 
 	// Movement
 
-	func day(byAddingDays value: Int) -> Day {
+	public func day(byAddingDays value: Int) -> Day {
 		let date = calendar.date(byAdding: .day, value: value, to: referenceDate)!
 		return Day(date: date, in: calendar)
 	}
 
-	var next: Day {
+	public var next: Day {
 		return day(byAddingDays: 1)
 	}
 
-	var previous: Day {
+	public var previous: Day {
 		return day(byAddingDays: -1)
 	}
 

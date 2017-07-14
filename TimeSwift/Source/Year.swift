@@ -8,70 +8,69 @@
 
 import Foundation
 
-
-struct Year: Comparable {
-	static let current = Year(date: Date())
+public struct Year: Comparable {
+	public static let current = Year(date: Date())
 
 	fileprivate let referenceDate: Date
 	fileprivate let calendar: Calendar
 
-	init(date: Date, in calendar: Calendar = .current) {
+	public init(date: Date, in calendar: Calendar = .current) {
 		self.referenceDate = date
 		self.calendar = calendar
 	}
 
 	// Basic
 
-	var year: Int {
+	public var year: Int {
 		return calendar.component(.year, from: referenceDate)
 	}
 
-	var isCurrentYear: Bool {
+	public var isCurrentYear: Bool {
 		return Year.current.year == year
 	}
 
-	var isLeapYear: Bool {
+	public var isLeapYear: Bool {
 		return numberOfDays == 364
 	}
 
 	// Days
 
-	var numberOfDays: Int {
+	public var numberOfDays: Int {
 		let interval = calendar.dateInterval(of: .year, for: referenceDate)!
 		return calendar.dateComponents([.day], from: interval.start, to: interval.end).day!
 	}
 
 	// Weeks
 
-	var numberOfWeeks: Int {
+	public var numberOfWeeks: Int {
 		return calendar.range(of: .weekOfYear, in: .year, for: referenceDate)!.count
 	}
 
 	// Months
 
-	var firstMonthOfTheYearDate: Date {
+	public var firstMonthOfTheYearDate: Date {
 		let components = calendar.dateComponents([.year], from: referenceDate)
 		return calendar.date(from: components)!
 	}
 
-	var firstMonthOfTheYearMonth: Month {
+	public var firstMonthOfTheYearMonth: Month {
 		return Month(date: firstMonthOfTheYearDate, in: calendar)
 	}
 
-	var lastMonthOfTheYearDate: Date {
+	public var lastMonthOfTheYearDate: Date {
 		let components = DateComponents(month: numberOfMonths, day: -1)
 		return calendar.date(byAdding: components, to: firstMonthOfTheYearDate)!
 	}
 
-	var lastMonthOfTheYearMonth: Month {
+	public var lastMonthOfTheYearMonth: Month {
 		return Month(date: lastMonthOfTheYearDate, in: calendar)
 	}
 
-	var numberOfMonths: Int {
+	public var numberOfMonths: Int {
 		return calendar.range(of: .month, in: .year, for: referenceDate)!.count
 	}
 
-	var months: [Month] {
+	public var months: [Month] {
 		var month = firstMonthOfTheYearMonth
 		var months: [Month] = []
 
@@ -85,26 +84,26 @@ struct Year: Comparable {
 
 	// Movement
 
-	func year(byAddingYears value: Int) -> Year {
+	public func year(byAddingYears value: Int) -> Year {
 		let date = calendar.date(byAdding: .year, value: value, to: referenceDate)!
 		return Year(date: date, in: calendar)
 	}
 
-	var next: Year {
+	public var next: Year {
 		return year(byAddingYears: 1)
 	}
 
-	var previous: Year {
+	public var previous: Year {
 		return year(byAddingYears: -1)
 	}
 
 	// Comparable
 
-	static func <(lhs: Year, rhs: Year) -> Bool {
+	public static func <(lhs: Year, rhs: Year) -> Bool {
 		return lhs.referenceDate < rhs.referenceDate
 	}
 
-	static func ==(lhs: Year, rhs: Year) -> Bool {
+	public static func ==(lhs: Year, rhs: Year) -> Bool {
 		return lhs.referenceDate == rhs.referenceDate
 	}
 }

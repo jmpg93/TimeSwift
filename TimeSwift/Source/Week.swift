@@ -8,52 +8,52 @@
 
 import Foundation
 
-struct Week: Comparable {
-	static let current = Week(date: Date())
+public struct Week: Comparable {
+	public static let current = Week(date: Date())
 
 	fileprivate let referenceDate: Date
 	fileprivate let calendar: Calendar
 
-	init(date: Date, in calendar: Calendar = .current) {
+	public init(date: Date, in calendar: Calendar = .current) {
 		self.referenceDate = date
 		self.calendar = calendar
 	}
 
 	// Basic
 
-	var weekOfMonth: Int {
+	public var weekOfMonth: Int {
 		return calendar.dateComponents([.weekOfMonth], from: referenceDate).weekOfMonth!
 	}
 
-	var weekOfYear: Int {
+	public var weekOfYear: Int {
 		return calendar.dateComponents([.weekOfYear], from: referenceDate).weekOfYear!
 	}
 
-	var isCurrentWeek: Bool {
+	public var isCurrentWeek: Bool {
 		return Week.current.weekOfYear == weekOfYear || month.isCurrentMonth || year.isCurrentYear
 	}
 
-	var numberOfWeekdays: Int {
+	public var numberOfWeekdays: Int {
 		return calendar.range(of: .weekday, in: .month, for: referenceDate)!.count
 	}
 
 	// Jumps
 
-	var month: Month {
+	public var month: Month {
 		return Month(date: referenceDate, in: calendar)
 	}
 
-	var year: Year {
+	public var year: Year {
 		return Year(date: referenceDate, in: calendar)
 	}
 
 	// Comparable
 
-	static func <(lhs: Week, rhs: Week) -> Bool {
+	public static func <(lhs: Week, rhs: Week) -> Bool {
 		return lhs.referenceDate < rhs.referenceDate
 	}
 
-	static func ==(lhs: Week, rhs: Week) -> Bool {
+	public static func ==(lhs: Week, rhs: Week) -> Bool {
 		return lhs.referenceDate == rhs.referenceDate
 	}
 }
