@@ -59,6 +59,10 @@ public struct Month: Comparable {
 		return calendar.range(of: .day, in: .month, for: referenceDate)!.count
 	}
 
+	public var numberOfWeekdays: Int {
+		return Week(date: referenceDate, in: calendar).numberOfWeekdays
+	}
+
 	public var firstDayOfTheMonthDate: Date {
 		let components = calendar.dateComponents([.year, .month], from: referenceDate)
 		return calendar.date(from: components)!
