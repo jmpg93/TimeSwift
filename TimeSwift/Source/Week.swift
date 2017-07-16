@@ -30,7 +30,7 @@ public struct Week: Comparable {
 	}
 
 	public var isCurrentWeek: Bool {
-		return Week.current.weekOfYear == weekOfYear || month.isCurrentMonth || year.isCurrentYear
+		return Week.current.weekOfYear == weekOfYear && month.isCurrentMonth && year.isCurrentYear
 	}
 
 	public var numberOfWeekdays: Int {

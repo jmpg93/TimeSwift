@@ -40,7 +40,7 @@ public struct Month: Comparable {
 	}
 
 	public var isCurrentMonth: Bool {
-		return Month.current.month == month || year.isCurrentYear
+		return Month.current.month == month && year.isCurrentYear
 	}
 
 	public var isLeapMonth: Bool {
