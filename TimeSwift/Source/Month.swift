@@ -80,16 +80,6 @@ public struct Month: Comparable {
 		return Day(date: lastDayOfTheMonthDate)
 	}
 
-	// White days
-
-	public var whiteDaysAfterFirstDayOfTheMonth: Int {
-		return firstDayOfTheMonthDay.weekday.advanced(by: -1)
-	}
-
-	public var whiteDaysBeforeEndDayOfTheMonth: Int {
-		let anyWeek = Week(date: referenceDate, in: calendar)
-		return anyWeek.numberOfWeekdays - lastDayOfTheMonthDay.weekday
-	}
 
 	// Jumps
 
