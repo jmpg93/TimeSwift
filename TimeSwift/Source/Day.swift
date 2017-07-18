@@ -40,7 +40,7 @@ public struct Day: Comparable {
 	}
 
 	public var weekday: Int {
-		return calendar.dateComponents([.weekday], from: referenceDate).weekday!.advanced(by: -1)
+		return calendar.dateComponents([.weekday], from: referenceDate).weekday!
 	}
 
 	public var yearday: Int {

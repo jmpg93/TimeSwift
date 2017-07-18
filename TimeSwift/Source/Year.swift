@@ -49,8 +49,9 @@ public struct Year: Comparable {
 	// Months
 
 	public var firstMonthOfTheYearDate: Date {
-		let components = calendar.dateComponents([.year], from: referenceDate)
-		return calendar.date(from: components)!
+		let yearBeforeLastMonthComponents = calendar.dateComponents([.year], from: referenceDate)
+		let yearBeforeLastMonthDate = calendar.date(from: yearBeforeLastMonthComponents)!
+		return calendar.date(byAdding: .day, value: 1, to: yearBeforeLastMonthDate , wrappingComponents: false)!
 	}
 
 	public var firstMonthOfTheYearMonth: Month {
