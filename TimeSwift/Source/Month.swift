@@ -53,6 +53,14 @@ public struct Month: Comparable {
 		return calendar.range(of: .weekOfMonth, in: .month, for: referenceDate)!.count
 	}
 
+	public var weekdaySymbols: [String] {
+		return calendar.weekdaySymbols
+	}
+
+	public var veryShorWeekdaySymbols: [String] {
+		return calendar.veryShortWeekdaySymbols
+	}
+	
 	// Days
 
 	public var numberOfDays: Int {

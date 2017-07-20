@@ -83,6 +83,10 @@ public struct Year: Comparable {
 		return months
 	}
 
+	var monthSymbols: [String] {
+		return calendar.monthSymbols
+	}
+
 	// Movement
 
 	public func year(byAddingYears value: Int) -> Year {
