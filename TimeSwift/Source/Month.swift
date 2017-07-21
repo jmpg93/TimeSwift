@@ -11,8 +11,8 @@ import Foundation
 public struct Month: Comparable {
 	static let current: Month = Month(date: Date())
 
-	fileprivate let referenceDate: Date
-	fileprivate let calendar: Calendar
+	let referenceDate: Date
+	let calendar: Calendar
 
 	public init(date: Date, in calendar: Calendar = .current) {
 		self.referenceDate = date
@@ -122,15 +122,5 @@ public struct Month: Comparable {
 
 	public var previous: Month {
 		return month(byAddingMonth: -1)
-	}
-
-	// Comparable
-
-	public static func <(lhs: Month, rhs: Month) -> Bool {
-		return lhs.referenceDate < rhs.referenceDate
-	}
-
-	public static func ==(lhs: Month, rhs: Month) -> Bool {
-		return lhs.referenceDate == rhs.referenceDate
 	}
 }

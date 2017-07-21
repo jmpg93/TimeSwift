@@ -11,8 +11,8 @@ import Foundation
 public struct Week: Comparable {
 	public static let current = Week(date: Date())
 
-	fileprivate let referenceDate: Date
-	fileprivate let calendar: Calendar
+	let referenceDate: Date
+	let calendar: Calendar
 
 	public init(date: Date, in calendar: Calendar = .current) {
 		self.referenceDate = date
@@ -47,13 +47,4 @@ public struct Week: Comparable {
 		return Year(date: referenceDate, in: calendar)
 	}
 
-	// Comparable
-
-	public static func <(lhs: Week, rhs: Week) -> Bool {
-		return lhs.referenceDate < rhs.referenceDate
-	}
-
-	public static func ==(lhs: Week, rhs: Week) -> Bool {
-		return lhs.referenceDate == rhs.referenceDate
-	}
 }

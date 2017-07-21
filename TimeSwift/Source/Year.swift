@@ -11,8 +11,8 @@ import Foundation
 public struct Year: Comparable {
 	public static let current = Year(date: Date())
 
-	fileprivate let referenceDate: Date
-	fileprivate let calendar: Calendar
+	let referenceDate: Date
+	let calendar: Calendar
 
 	public init(date: Date, in calendar: Calendar = .current) {
 		self.referenceDate = date
@@ -100,15 +100,5 @@ public struct Year: Comparable {
 
 	public var previous: Year {
 		return year(byAddingYears: -1)
-	}
-
-	// Comparable
-
-	public static func <(lhs: Year, rhs: Year) -> Bool {
-		return lhs.referenceDate < rhs.referenceDate
-	}
-
-	public static func ==(lhs: Year, rhs: Year) -> Bool {
-		return lhs.referenceDate == rhs.referenceDate
 	}
 }

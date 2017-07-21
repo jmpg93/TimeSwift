@@ -11,8 +11,8 @@ import Foundation
 public struct Day: Comparable {
 	public static let current = Day(date: Date())
 
-	fileprivate let referenceDate: Date
-	fileprivate let calendar: Calendar
+	let referenceDate: Date
+	let calendar: Calendar
 
 	public init(date: Date, in calendar: Calendar = .current) {
 		self.referenceDate = date
@@ -82,15 +82,5 @@ public struct Day: Comparable {
 
 	public var previous: Day {
 		return day(byAddingDays: -1)
-	}
-
-	// Comparable
-
-	public static func <(lhs: Day, rhs: Day) -> Bool {
-		return lhs.referenceDate < rhs.referenceDate
-	}
-
-	public static func ==(lhs: Day, rhs: Day) -> Bool {
-		return lhs.referenceDate == rhs.referenceDate
 	}
 }
