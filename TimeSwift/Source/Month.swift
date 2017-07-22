@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Month: Comparable {
-	static let current: Month = Month(date: Date())
+	public static let current: Month = Month(date: Date())
 
 	let referenceDate: Date
 	let calendar: Calendar
