@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Year: Comparable {
+public struct Year: Comparable, Hashable {
 	public static let current = Year(date: Date())
 
 	let referenceDate: Date
@@ -100,5 +100,11 @@ public struct Year: Comparable {
 
 	public var previous: Year {
 		return year(byAddingYears: -1)
+	}
+
+	// Hashable
+
+	public var hashValue: Int {
+		return year.hashValue
 	}
 }
