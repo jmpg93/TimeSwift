@@ -46,6 +46,14 @@ public struct Year: Comparable, Hashable {
 		return calendar.range(of: .weekOfYear, in: .year, for: referenceDate)!.count
 	}
 
+	public var weekDaySymbols: [String] {
+		return calendar.weekdaySymbols
+	}
+
+	public var veryShortWeekdaySymbols: [String] {
+		return calendar.veryShortWeekdaySymbols
+	}
+	
 	// Months
 
 	public var firstMonthOfTheYearDate: Date {
@@ -71,17 +79,17 @@ public struct Year: Comparable, Hashable {
 		return calendar.range(of: .month, in: .year, for: referenceDate)!.count
 	}
 
-	public var months: [Month] {
-		var month = firstMonthOfTheYearMonth
+	public lazy var months: [Month] = {
+		var month = self.firstMonthOfTheYearMonth
 		var months: [Month] = []
 
-		while month <= lastMonthOfTheYearMonth {
+		while month <= self.lastMonthOfTheYearMonth {
 			months.append(month)
 			month = month.next
 		}
 
 		return months
-	}
+	}()
 
 	var monthSymbols: [String] {
 		return calendar.monthSymbols
