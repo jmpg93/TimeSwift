@@ -14,7 +14,7 @@ public struct Day: Comparable {
 	let referenceDate: Date
 	let calendar: Calendar
 
-	public init(date: Date, in calendar: Calendar = .current) {
+	public init(date: Date = Date(), in calendar: Calendar = .current) {
 		self.referenceDate = date
 		self.calendar = calendar
 	}
