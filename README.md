@@ -6,7 +6,7 @@ Syntax sugar to work with dates like you never did before!
 let day = Day()
 
 // Jumps
-let tomorrow = day.nextm// Month
+let tomorrow = day.next// Month
 let yesterday = day.previous // Month
 let nextWeekDay = day.day(byAddingDays: 7) // Month
 let year = day.year // Year
